@@ -1,0 +1,26 @@
+<div class="container">
+  <h1 style="font-family: 'Carter One', cursive;">MY Quotes</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngFor='let quote of quotes;let i = index'>
+        <div>
+          <h6 id={{i}} appStrikethrough style="font-family: 'Caveat Brush', cursive; font-size:22px">{{quote.description}} </h6>
+          <button (click)='toggleDetails(i)' class="btn btn-primary" style="border-radius: 20px;">Details</button>
+          <hr>
+        </div>
+
+        <div *ngIf='quote.showDescription'>
+          <app-quote-detail  [quote]='quote' (isComplete) = 'deleteQuote($event,i)'></app-quote-detail>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <app-quote-form (addQuote)="addNewQuote($event)"></app-quote-form>
+ </div>
+  </div>
+  <p *ngIf='quotes.length > 5'>You have too many quotes</p>
+</div>
+<h6 style="text-align: center; margin-top: 1cm; font-family: 'Caveat Brush', cursive; font-size: 22px;">Anything worth doing well is worth doing poorly at first.</h6>
+<h6 style="text-align: center; margin-top: 0; font-family: 'Caveat Brush', cursive; font-size: 22px;">— Ray Congdon</h6>

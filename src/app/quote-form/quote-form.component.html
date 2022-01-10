@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <h2 class="text-center" style="font-family: 'Carter One', cursive;">Create a new Quote</h2>
+    <hr>
+    <form (ngSubmit)='submitQuote()' #quoteForm='ngForm'>
+        <div class="form-group">
+  
+            <label for="name" style="font-family: 'Caveat Brush', cursive; font-size: 22px;">Name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="newQuote.name" name="name" #name='ngModel' required style="background-color: transparent;">
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+              <p style="font-family: 'Caveat Brush', cursive; font-size: 20px;">Name is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+  
+            <label for="description" style="font-family: 'Caveat Brush', cursive; font-size: 22px;">Quote</label>
+            <textarea class="form-control" id="description" rows="4" [(ngModel)]="newQuote.description" name="description" #description="ngModel" required style="background-color: transparent;"></textarea>
+            <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+              <p style="font-family: 'Caveat Brush', cursive; font-size: 20px;">Quote is required</p>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 0.5cm;">
+  
+            <label for="complete" style="font-family: 'Caveat Brush', cursive; font-size: 20px; margin-right: 0.5cm;">Date</label>
+            <input type='date' id="complete" [(ngModel)]="newQuote.completeDate" name="completeDate" #completeDate="ngModel" required style="background-color: transparent;">
+            <div [hidden]="completeDate.valid || completeDate.pristine" class="alert alert-danger">
+              <p style="font-family: 'Caveat Brush', cursive; font-size: 20px;">Date is required</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" style="border-radius: 20px;margin-top: 1cm;font-family: 'Marmelad', sans-serif; ">Add Quote</button>
+    </form>
+  </div>
